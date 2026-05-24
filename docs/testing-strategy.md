@@ -26,6 +26,8 @@ Playwright tests will validate complete user flows such as wallet connection, fa
 
 Real wallet or testnet smoke tests are optional, later-stage checks only. They must use separate test wallets, free faucet funds, configurable external RPC, and a future approved spec.
 
+The Phase 2 Wallet Connect E2E coverage uses a mocked provider injected into the browser page. It verifies local wallet connection behavior without a real wallet, real funds, testnet, mainnet, paid RPC, or secrets.
+
 ## Negative Tests
 
 Negative tests should cover rejected signatures, chain mismatch, failed transactions, pending states, unavailable RPC endpoints, duplicate actions, invalid inputs, and permission failures.

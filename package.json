@@ -12,13 +12,13 @@
     "dev": "next dev --hostname 127.0.0.1",
     "build": "next build",
     "start": "next start --hostname 127.0.0.1",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint app next.config.ts hardhat.config.ts playwright.config.ts tests",
-    "format:check": "prettier --check app next.config.ts hardhat.config.ts playwright.config.ts eslint.config.mjs tests/skeleton.test.mjs package.json tsconfig.json .yarnrc.yml docs/setup/local-development.md",
-    "test": "node --test tests/*.test.mjs",
+    "typecheck": "next typegen && tsc --noEmit",
+    "lint": "eslint app components lib e2e scripts next.config.ts hardhat.config.ts playwright.config.ts tests",
+    "format:check": "prettier --check app components lib e2e scripts next.config.ts hardhat.config.ts playwright.config.ts eslint.config.mjs tests package.json tsconfig.json .yarnrc.yml docs/setup/local-development.md docs/setup/preconditions.md",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs tests/*.test.ts",
     "verify": "yarn typecheck && yarn lint && yarn test && yarn format:check",
     "hardhat": "hardhat",
-    "test:e2e": "playwright test"
+    "test:e2e": "node scripts/run-e2e.mjs"
   },
   "dependencies": {
     "next": "16.2.6",

@@ -142,20 +142,19 @@ Medium. The target behavior is clear, but exact library versions, provider mocki
 
 ## Verification Gate
 
-- [ ] Spec exists.
-- [ ] Scope is respected.
-- [ ] TDD or verification-first evidence exists where applicable.
-- [ ] Relevant documentation checks are run.
-- [ ] Automated wallet tests do not require a real wallet.
-- [ ] Local-first behavior is preserved.
-- [ ] Real funds are avoided.
-- [ ] Mainnet is avoided.
-- [ ] Paid infrastructure requirements are avoided.
-- [ ] Production wallet assumptions are avoided.
-- [ ] Secrets are excluded from files and docs.
-- [ ] Optional external services are clearly marked optional.
-- [ ] AI Change Record exists.
-- [ ] Known limitations documented.
-- [ ] Uncertainty classified.
-- [ ] Final report includes evidence.
-
+- [x] Spec exists.
+- [x] Scope is respected.
+- [x] TDD or verification-first evidence exists where applicable.
+- [x] Relevant documentation checks are run.
+- [x] Automated wallet tests do not require a real wallet.
+- [x] Local-first behavior is preserved.
+- [x] Real funds are avoided.
+- [x] Mainnet is avoided.
+- [x] Paid infrastructure requirements are avoided.
+- [x] Production wallet assumptions are avoided.
+- [x] Secrets are excluded from files and docs.
+- [x] Optional external services are clearly marked optional.
+- [x] AI Change Record exists.
+- [x] Known limitations documented.
+- [x] Uncertainty classified.
+- [x] Final report includes evidence.

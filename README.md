@@ -54,14 +54,15 @@ See `AGENTS.md` and `docs/ai-agent/` for the operating rules.
 
 Status: Phase 1, Project Skeleton.
 
-This repository currently contains documentation, process rules, templates, a Yarn-based TypeScript skeleton, a neutral Next.js placeholder app, local-only Hardhat configuration, Playwright configuration, and skeleton verification checks.
+This repository currently contains documentation, process rules, templates, a Yarn-based TypeScript skeleton, a local-first Wallet Connect UI, local-only Hardhat configuration, Playwright configuration, and verification checks.
 
-It does not yet contain product Web3 features, smart contract behavior, wallet flows, testnet deployment, CI workflows, or production code.
+It does not yet contain smart contract behavior, faucet functionality, NFT minting, DAO voting, testnet deployment, CI workflows, or production code.
 
 Local baseline checks:
 
 ```bash
 corepack yarn verify
+corepack yarn test:e2e
 ```
 
 ## Roadmap Summary
