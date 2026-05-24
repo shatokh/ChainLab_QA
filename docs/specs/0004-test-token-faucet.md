@@ -146,22 +146,21 @@ Medium. The intended local faucet behavior is clear, but exact contract design, 
 
 ## Verification Gate
 
-- [ ] Spec exists.
-- [ ] Scope is respected.
-- [ ] TDD or verification-first evidence exists where applicable.
-- [ ] Relevant documentation checks are run.
-- [ ] Contract tests run on local Hardhat only.
-- [ ] Automated faucet tests do not require a real wallet.
-- [ ] Local-first behavior is preserved.
-- [ ] Real funds are avoided.
-- [ ] Mainnet is avoided.
-- [ ] Testnet is not required for local verification.
-- [ ] Paid infrastructure requirements are avoided.
-- [ ] Production wallet assumptions are avoided.
-- [ ] Secrets are excluded from files and docs.
-- [ ] Optional external services are clearly marked optional.
-- [ ] AI Change Record exists.
-- [ ] Known limitations documented.
-- [ ] Uncertainty classified.
-- [ ] Final report includes evidence.
-
+- [x] Spec exists.
+- [x] Scope is respected.
+- [x] TDD or verification-first evidence exists where applicable.
+- [x] Relevant documentation checks are run.
+- [x] Contract tests run on local Hardhat only.
+- [x] Automated faucet tests do not require a real wallet.
+- [x] Local-first behavior is preserved.
+- [x] Real funds are avoided.
+- [x] Mainnet is avoided.
+- [x] Testnet is not required for local verification.
+- [x] Paid infrastructure requirements are avoided.
+- [x] Production wallet assumptions are avoided.
+- [x] Secrets are excluded from files and docs.
+- [x] Optional external services are clearly marked optional.
+- [x] AI Change Record exists.
+- [x] Known limitations documented.
+- [x] Uncertainty classified.
+- [x] Final report includes evidence.

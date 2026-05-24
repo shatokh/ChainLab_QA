@@ -32,6 +32,19 @@ test("connects to a mocked local wallet provider", async ({ page }) => {
 
   await expect(page.getByText("0x1234...5678")).toBeVisible();
   await expect(page.getByText("Local Hardhat (31337)")).toBeVisible();
+
+  await page.getByRole("button", { name: "Request 100 CLT" }).click();
+
+  await expect(
+    page.getByText("Received 100 CLT from the local faucet."),
+  ).toBeVisible();
+  const faucetStatus = page.getByLabel("Faucet status");
+  await expect(
+    faucetStatus.getByText("100 CLT", { exact: true }),
+  ).toBeVisible();
+  await expect(
+    faucetStatus.getByText("900 CLT", { exact: true }),
+  ).toBeVisible();
 });
 
 test("shows missing provider state without a wallet provider", async ({
@@ -42,4 +55,7 @@ test("shows missing provider state without a wallet provider", async ({
   await page.getByRole("button", { name: "Connect wallet" }).click();
 
   await expect(page.getByText("No wallet provider found.")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Request 100 CLT" }),
+  ).toBeDisabled();
 });

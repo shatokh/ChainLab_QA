@@ -8,6 +8,8 @@ Automated tests must run locally by default and must not require real funds, mai
 
 Smart contract tests will verify contract behavior directly in Hardhat, including state changes, events, permissions, revert cases, and boundary conditions. Contract tests must use a local Hardhat network by default.
 
+The Phase 3 Test Token + Faucet contract checks run with `corepack yarn test:contracts` and use Hardhat Solidity tests only on the local simulated network.
+
 ## Integration Tests
 
 Integration tests will verify that frontend-facing contract calls, generated artifacts, ABI usage, and local network behavior work together as expected.

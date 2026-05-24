@@ -64,6 +64,7 @@ Run individual checks:
 corepack yarn typecheck
 corepack yarn lint
 corepack yarn test
+corepack yarn test:contracts
 corepack yarn format:check
 ```
 
@@ -107,6 +108,12 @@ Check Hardhat is available:
 
 ```bash
 corepack yarn hardhat --help
+```
+
+Run local Solidity contract tests:
+
+```bash
+corepack yarn test:contracts
 ```
 
 Start a local Hardhat node only when a future feature requires it:
@@ -159,8 +166,24 @@ Keep this list short and update it as features are added.
 - Preconditions: dependencies installed.
 - Steps:
   1. Run `corepack yarn verify`.
-- Expected result: typecheck, lint, node tests, and format check pass.
+- Expected result: typecheck, lint, node tests, Solidity contract tests, and format check pass.
 - Automation: package script `verify`.
+
+### CP-006: Test Token Faucet Contract
+
+- Preconditions: dependencies installed.
+- Steps:
+  1. Run `corepack yarn test:contracts`.
+- Expected result: local Solidity tests prove token metadata, faucet claim, faucet inventory reduction, zero-address rejection, and empty-faucet rejection.
+- Automation: `contracts/TestTokenFaucet.t.sol`.
+
+### CP-007: Test Token Faucet UI
+
+- Preconditions: no real wallet required.
+- Steps:
+  1. Run `corepack yarn test:e2e`.
+- Expected result: mocked local wallet connects, `Request 100 CLT` updates the user balance to `100 CLT`, and faucet balance becomes `900 CLT`.
+- Automation: `e2e/wallet-connect.spec.ts`.
 
 ## When To Update This Runbook
 

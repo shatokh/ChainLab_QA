@@ -16,7 +16,8 @@
     "lint": "eslint app components lib e2e scripts next.config.ts hardhat.config.ts playwright.config.ts tests",
     "format:check": "prettier --check app components lib e2e scripts next.config.ts hardhat.config.ts playwright.config.ts eslint.config.mjs tests package.json tsconfig.json .yarnrc.yml docs/setup/local-development.md docs/setup/preconditions.md",
     "test": "node --experimental-strip-types --test tests/*.test.mjs tests/*.test.ts",
-    "verify": "yarn typecheck && yarn lint && yarn test && yarn format:check",
+    "test:contracts": "hardhat test solidity",
+    "verify": "yarn typecheck && yarn lint && yarn test && yarn test:contracts && yarn format:check",
     "hardhat": "hardhat",
     "test:e2e": "node scripts/run-e2e.mjs"
   },

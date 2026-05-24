@@ -63,6 +63,7 @@ Local baseline checks:
 ```bash
 corepack yarn verify
 corepack yarn test:e2e
+corepack yarn test:contracts
 ```
 
 ## Roadmap Summary

@@ -54,13 +54,15 @@ p {
   line-height: 1.6;
 }
 
-.wallet-panel {
+.wallet-panel,
+.faucet-panel {
   margin-top: 28px;
   padding-top: 24px;
   border-top: 1px solid #d8dee9;
 }
 
-.wallet-panel h2 {
+.wallet-panel h2,
+.faucet-panel h2 {
   margin: 0 0 12px;
   font-size: 1.35rem;
   line-height: 1.3;
