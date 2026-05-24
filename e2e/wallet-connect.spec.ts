@@ -45,6 +45,18 @@ test("connects to a mocked local wallet provider", async ({ page }) => {
   await expect(
     faucetStatus.getByText("900 CLT", { exact: true }),
   ).toBeVisible();
+
+  await page.getByRole("button", { name: "Mint local NFT" }).click();
+
+  await expect(page.getByText("Minted CLNFT #1 locally.")).toBeVisible();
+  const nftStatus = page.getByLabel("NFT mint status");
+  await expect(nftStatus.getByText("#2", { exact: true })).toBeVisible();
+  const latestNft = page.getByLabel("Latest minted NFT");
+  await expect(latestNft.getByText("#1", { exact: true })).toBeVisible();
+  await expect(latestNft.getByText(account, { exact: true })).toBeVisible();
+  await expect(
+    latestNft.getByText("chainlab://local-nft/1", { exact: true }),
+  ).toBeVisible();
 });
 
 test("shows missing provider state without a wallet provider", async ({
@@ -57,5 +69,8 @@ test("shows missing provider state without a wallet provider", async ({
   await expect(page.getByText("No wallet provider found.")).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Request 100 CLT" }),
+  ).toBeDisabled();
+  await expect(
+    page.getByRole("button", { name: "Mint local NFT" }),
   ).toBeDisabled();
 });

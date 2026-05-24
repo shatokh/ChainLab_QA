@@ -10,6 +10,8 @@ Smart contract tests will verify contract behavior directly in Hardhat, includin
 
 The Phase 3 Test Token + Faucet contract checks run with `corepack yarn test:contracts` and use Hardhat Solidity tests only on the local simulated network.
 
+The Phase 4 NFT Mint contract checks also run with `corepack yarn test:contracts` and cover local-only collection metadata, mint ownership, token URI behavior, and revert cases on the local simulated network.
+
 ## Integration Tests
 
 Integration tests will verify that frontend-facing contract calls, generated artifacts, ABI usage, and local network behavior work together as expected.

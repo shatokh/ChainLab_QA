@@ -9,6 +9,7 @@ import {
   type WalletState,
 } from "../lib/wallet";
 import { FaucetPanel } from "./faucet-panel";
+import { NftMintPanel } from "./nft-mint-panel";
 
 const statusLabel: Record<WalletState["status"], string> = {
   idle: "Not connected",
@@ -87,6 +88,11 @@ export function WalletConnectPanel() {
 
       <FaucetPanel
         key={wallet.account ?? "no-account"}
+        account={wallet.account}
+        isLocalChain={wallet.status === "connected"}
+      />
+      <NftMintPanel
+        key={`nft-${wallet.account ?? "no-account"}`}
         account={wallet.account}
         isLocalChain={wallet.status === "connected"}
       />

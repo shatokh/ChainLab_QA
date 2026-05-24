@@ -185,6 +185,15 @@ Keep this list short and update it as features are added.
 - Expected result: mocked local wallet connects, `Request 100 CLT` updates the user balance to `100 CLT`, and faucet balance becomes `900 CLT`.
 - Automation: `e2e/wallet-connect.spec.ts`.
 
+### CP-008: Local NFT Mint
+
+- Preconditions: no real wallet required.
+- Steps:
+  1. Run `corepack yarn test:contracts`.
+  2. Run `corepack yarn test:e2e`.
+- Expected result: local Solidity tests prove NFT metadata, ownership assignment, token URI, zero-address rejection, and missing-token rejection. E2E proves mocked local wallet minting shows `CLNFT #1`, owner address, and `chainlab://local-nft/1`.
+- Automation: `contracts/ChainLabLocalNft.t.sol` and `e2e/wallet-connect.spec.ts`.
+
 ## When To Update This Runbook
 
 Update this document whenever a phase adds:
