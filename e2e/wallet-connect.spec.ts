@@ -57,6 +57,20 @@ test("connects to a mocked local wallet provider", async ({ page }) => {
   await expect(
     latestNft.getByText("chainlab://local-nft/1", { exact: true }),
   ).toBeVisible();
+
+  await page.getByRole("button", { name: "Vote yes" }).click();
+
+  await expect(
+    page.getByText("Your local yes vote was recorded."),
+  ).toBeVisible();
+  const daoProposalStatus = page.getByLabel("DAO proposal status");
+  await expect(
+    daoProposalStatus.getByText("yes", { exact: true }),
+  ).toBeVisible();
+  const daoVoteTotals = page.getByLabel("DAO vote totals");
+  await expect(daoVoteTotals.getByText("1", { exact: true })).toHaveCount(2);
+  await expect(daoVoteTotals.getByText("0", { exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Vote no" })).toBeDisabled();
 });
 
 test("shows missing provider state without a wallet provider", async ({
@@ -73,4 +87,6 @@ test("shows missing provider state without a wallet provider", async ({
   await expect(
     page.getByRole("button", { name: "Mint local NFT" }),
   ).toBeDisabled();
+  await expect(page.getByRole("button", { name: "Vote yes" })).toBeDisabled();
+  await expect(page.getByRole("button", { name: "Vote no" })).toBeDisabled();
 });

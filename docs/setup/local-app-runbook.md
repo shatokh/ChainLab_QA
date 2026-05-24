@@ -194,6 +194,15 @@ Keep this list short and update it as features are added.
 - Expected result: local Solidity tests prove NFT metadata, ownership assignment, token URI, zero-address rejection, and missing-token rejection. E2E proves mocked local wallet minting shows `CLNFT #1`, owner address, and `chainlab://local-nft/1`.
 - Automation: `contracts/ChainLabLocalNft.t.sol` and `e2e/wallet-connect.spec.ts`.
 
+### CP-009: Local DAO Voting
+
+- Preconditions: no real wallet required.
+- Steps:
+  1. Run `corepack yarn test:contracts`.
+  2. Run `corepack yarn test:e2e`.
+- Expected result: local Solidity tests prove seeded proposal metadata, yes/no votes, duplicate-vote rejection, invalid-proposal rejection, and zero-address rejection. E2E proves mocked local wallet voting records a yes vote and updates yes/total counts.
+- Automation: `contracts/ChainLabDaoVoting.t.sol` and `e2e/wallet-connect.spec.ts`.
+
 ## When To Update This Runbook
 
 Update this document whenever a phase adds:

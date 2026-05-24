@@ -12,6 +12,8 @@ The Phase 3 Test Token + Faucet contract checks run with `corepack yarn test:con
 
 The Phase 4 NFT Mint contract checks also run with `corepack yarn test:contracts` and cover local-only collection metadata, mint ownership, token URI behavior, and revert cases on the local simulated network.
 
+The Phase 5 DAO Voting contract checks also run with `corepack yarn test:contracts` and cover local-only proposal metadata, yes/no voting, duplicate-vote rejection, invalid-proposal rejection, and vote totals on the local simulated network.
+
 ## Integration Tests
 
 Integration tests will verify that frontend-facing contract calls, generated artifacts, ABI usage, and local network behavior work together as expected.

@@ -8,6 +8,7 @@ import {
   initialWalletState,
   type WalletState,
 } from "../lib/wallet";
+import { DaoVotingPanel } from "./dao-voting-panel";
 import { FaucetPanel } from "./faucet-panel";
 import { NftMintPanel } from "./nft-mint-panel";
 
@@ -93,6 +94,11 @@ export function WalletConnectPanel() {
       />
       <NftMintPanel
         key={`nft-${wallet.account ?? "no-account"}`}
+        account={wallet.account}
+        isLocalChain={wallet.status === "connected"}
+      />
+      <DaoVotingPanel
+        key={`dao-${wallet.account ?? "no-account"}`}
         account={wallet.account}
         isLocalChain={wallet.status === "connected"}
       />
