@@ -2,6 +2,13 @@
 node_modules/
 .pnp/
 .pnp.js
+.pnp.cjs
+.yarn/*
+!.yarn/patches/
+!.yarn/plugins/
+!.yarn/releases/
+!.yarn/sdks/
+!.yarn/versions/
 
 # Build output
 .next/
@@ -9,6 +16,7 @@ out/
 dist/
 build/
 coverage/
+*.tsbuildinfo
 playwright-report/
 test-results/
 

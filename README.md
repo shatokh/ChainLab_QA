@@ -52,9 +52,17 @@ See `AGENTS.md` and `docs/ai-agent/` for the operating rules.
 
 ## Current Project Status
 
-Status: Phase 0, Repository Governance & AI Agent Rules.
+Status: Phase 1, Project Skeleton.
 
-This repository currently contains documentation, process rules, templates, the first spec, and the first AI Change Record only. It does not yet contain Next.js, Hardhat, Playwright, package configuration, smart contracts, tests, or application code.
+This repository currently contains documentation, process rules, templates, a Yarn-based TypeScript skeleton, a neutral Next.js placeholder app, local-only Hardhat configuration, Playwright configuration, and skeleton verification checks.
+
+It does not yet contain product Web3 features, smart contract behavior, wallet flows, testnet deployment, CI workflows, or production code.
+
+Local baseline checks:
+
+```bash
+corepack yarn verify
+```
 
 ## Roadmap Summary
 

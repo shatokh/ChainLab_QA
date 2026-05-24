@@ -56,3 +56,11 @@ This repository uses a controlled AI-assisted engineering workflow. Future agent
 ## Anti-Patterns
 
 Forbidden behaviors include coding-first implementation, broad unspec'd refactors, silent dependency additions, claiming tests passed without evidence, removing tests to make CI green, meaningless over-mocking, hiding uncertainty, touching unrelated scope, using real funds or mainnet, requiring paid infrastructure without an approved spec, committing secrets, assuming production wallet use, and treating local Hardhat success as testnet validation.
+
+## Commit Messages
+
+- Write commit messages in English.
+- Use one short, clear line only.
+- Prefer Conventional Commits: `type(scope): summary`.
+- Use imperative present tense, for example `add`, `update`, `fix`.
+- Do not add long descriptions unless explicitly requested.
