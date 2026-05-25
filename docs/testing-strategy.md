@@ -4,6 +4,8 @@ This document defines planned testing layers for future phases. Phase 0 creates 
 
 Automated tests must run locally by default and must not require real funds, mainnet, paid RPC, paid hosting, paid tooling, or production wallets. The local Hardhat network is the default Web3 verification environment.
 
+Detailed QA planning, traceability, exploratory charters, defect examples, and evidence templates live in `docs/qa/`.
+
 ## Smart Contract Unit Tests
 
 Smart contract tests will verify contract behavior directly in Hardhat, including state changes, events, permissions, revert cases, and boundary conditions. Contract tests must use a local Hardhat network by default.
@@ -44,4 +46,4 @@ CI should run repeatable local checks and publish enough evidence to support rev
 
 ## Manual Exploratory Testing
 
-Manual exploratory testing notes should capture wallet behavior, visual issues, timing problems, and cases not yet automated.
+Manual exploratory testing notes should capture wallet behavior, visual issues, timing problems, and cases not yet automated. Use `docs/qa/exploratory-charters.md` for focused local sessions and `docs/qa/evidence-report-template.md` when recording local verification evidence.

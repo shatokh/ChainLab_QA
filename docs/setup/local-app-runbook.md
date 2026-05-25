@@ -87,6 +87,8 @@ $env:NODE_OPTIONS='--use-system-ca'
 corepack yarn npm audit --all --recursive
 ```
 
+For QA planning, traceability, exploratory testing, defect examples, and local evidence templates, see `docs/qa/README.md`.
+
 ## Playwright Browser Setup
 
 If E2E tests report a missing browser binary, install Chromium locally:

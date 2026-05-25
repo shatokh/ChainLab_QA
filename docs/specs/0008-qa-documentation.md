@@ -143,20 +143,20 @@ Low. This is a documentation-only phase based on already implemented local workf
 
 ## Verification Gate
 
-- [ ] Spec exists.
-- [ ] Scope is respected.
-- [ ] TDD or verification-first evidence exists where applicable.
-- [ ] Relevant documentation checks are run.
-- [ ] Documentation-only scope is preserved.
-- [ ] Local-first behavior is preserved.
-- [ ] Real funds are avoided.
-- [ ] Mainnet is avoided.
-- [ ] Testnet is not required for local verification.
-- [ ] Paid infrastructure requirements are avoided.
-- [ ] Production wallet assumptions are avoided.
-- [ ] Secrets are excluded from files and docs.
-- [ ] Optional external services are clearly marked optional.
-- [ ] AI Change Record exists.
-- [ ] Known limitations documented.
-- [ ] Uncertainty classified.
-- [ ] Final report includes evidence.
+- [x] Spec exists.
+- [x] Scope is respected.
+- [x] TDD or verification-first evidence exists where applicable.
+- [x] Relevant documentation checks are run.
+- [x] Documentation-only scope is preserved.
+- [x] Local-first behavior is preserved.
+- [x] Real funds are avoided.
+- [x] Mainnet is avoided.
+- [x] Testnet is not required for local verification.
+- [x] Paid infrastructure requirements are avoided.
+- [x] Production wallet assumptions are avoided.
+- [x] Secrets are excluded from files and docs.
+- [x] Optional external services are clearly marked optional.
+- [x] AI Change Record exists.
+- [x] Known limitations documented.
+- [x] Uncertainty classified.
+- [x] Final report includes evidence.

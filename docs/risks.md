@@ -22,6 +22,8 @@
 - Over-mocking: tests can become meaningless if wallet, RPC, or contract behavior is mocked too heavily.
 - Flaky E2E tests: wallet and network timing can make end-to-end tests unstable without careful isolation.
 - Missing negative coverage: happy-path-only testing can hide the most important Web3 failure modes.
+- Evidence overstatement: local Hardhat or mocked-provider evidence can be incorrectly described as live wallet, testnet, or production validation.
+- Documentation drift: QA docs can become stale if feature tests or commands change without updating the traceability matrix.
 
 ## AI-Assisted Development Risks
 
