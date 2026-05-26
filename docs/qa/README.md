@@ -10,6 +10,14 @@ This directory captures the QA layer for ChainLab QA. It explains what is tested
 - `defect-examples.md`: realistic defect report examples for Web3 and AI-assisted workflow risks.
 - `evidence-report-template.md`: reusable template for local verification evidence.
 
+## Review Navigation
+
+- Start with `README.md` for the project status and command summary.
+- Use `docs/portfolio/README.md` for the portfolio review path.
+- Use `docs/architecture.md` for module boundaries and evidence scope.
+- Use `traceability-matrix.md` to map specs, files, tests, and commands.
+- Use `evidence-report-template.md` or `corepack yarn evidence:local` output when recording verification evidence.
+
 ## Evidence Boundaries
 
 - Local Hardhat and mocked providers are the default.

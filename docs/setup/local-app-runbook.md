@@ -99,7 +99,7 @@ $env:NODE_OPTIONS='--use-system-ca'
 corepack yarn npm audit --all --recursive
 ```
 
-For QA planning, traceability, exploratory testing, defect examples, and local evidence templates, see `docs/qa/README.md`.
+For QA planning, traceability, exploratory testing, defect examples, portfolio review navigation, and local evidence templates, see `docs/qa/README.md` and `docs/portfolio/README.md`.
 
 ## CI Evidence
 
