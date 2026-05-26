@@ -32,12 +32,16 @@ Create test plans, traceability notes, exploratory testing charters, and defect 
 
 Add GitHub Actions workflows, automated verification gates, and generated evidence artifacts.
 
-## Phase 8: Testnet Deployment
+## Phase 8: Optional Testnet Readiness
 
-Optionally deploy to Sepolia or Base Sepolia with free faucet funds only, documented risks, and testnet-specific verification. Testnet deployment is not required for local verification.
+Document optional testnet deployment requirements, manual preconditions, risks, and evidence boundaries while keeping the project maximally local-first. No public deployment is required in this phase.
 
 Mainnet deployment is explicitly out of scope for this project.
 
 ## Phase 9: Portfolio Polish
 
 Improve README evidence, screenshots, architecture diagrams, and review-ready documentation.
+
+## Phase 10: Optional Public Testnet Deployment
+
+After portfolio polish, reconsider whether a single public testnet deployment is worth adding. If approved by a future spec, deploy one selected contract to one selected public testnet, such as Sepolia or Base Sepolia, using a separate test-only wallet, free faucet funds only, configurable public/free-tier RPC, and clearly labeled optional testnet evidence. This phase remains optional and must not become required for local development, CI, or automated verification.
