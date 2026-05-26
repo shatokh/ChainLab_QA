@@ -19,7 +19,9 @@
     "test:contracts": "hardhat test solidity",
     "verify": "yarn typecheck && yarn lint && yarn test && yarn test:contracts && yarn format:check",
     "hardhat": "hardhat",
-    "test:e2e": "node scripts/run-e2e.mjs"
+    "test:e2e": "node scripts/run-e2e.mjs",
+    "evidence:local": "node scripts/write-local-evidence-report.mjs",
+    "evidence:open": "node scripts/write-local-evidence-report.mjs --open"
   },
   "dependencies": {
     "next": "16.2.6",

@@ -74,6 +74,18 @@ Run E2E checks:
 corepack yarn test:e2e
 ```
 
+Generate the browser-friendly local evidence report:
+
+```bash
+corepack yarn evidence:local
+```
+
+Open the generated report locally:
+
+```bash
+corepack yarn evidence:open
+```
+
 Run dependency audit:
 
 ```bash
@@ -88,6 +100,12 @@ corepack yarn npm audit --all --recursive
 ```
 
 For QA planning, traceability, exploratory testing, defect examples, and local evidence templates, see `docs/qa/README.md`.
+
+## CI Evidence
+
+The GitHub Actions workflow `.github/workflows/local-verification.yml` runs the same local verification gate with `corepack yarn verify`, installs Playwright Chromium, runs `corepack yarn test:e2e`, generates `reports/local-evidence-report.html`, and uploads `local-verification-evidence`.
+
+Treat this artifact as local CI evidence only. It is not testnet, mainnet, live wallet, production, paid RPC, or paid hosting validation.
 
 ## Playwright Browser Setup
 
@@ -171,7 +189,16 @@ Keep this list short and update it as features are added.
 - Expected result: typecheck, lint, node tests, Solidity contract tests, and format check pass.
 - Automation: package script `verify`.
 
-### CP-006: Test Token Faucet Contract
+### CP-006: Local HTML Evidence Report
+
+- Preconditions: dependencies installed.
+- Steps:
+  1. Run `corepack yarn evidence:local`.
+  2. Open `reports/local-evidence-report.html`.
+- Expected result: the static report shows command evidence, status cards, local-first boundaries, known limitations, and uncertainty classification.
+- Automation: `tests/evidence-report.test.mjs`.
+
+### CP-007: Test Token Faucet Contract
 
 - Preconditions: dependencies installed.
 - Steps:
@@ -179,7 +206,7 @@ Keep this list short and update it as features are added.
 - Expected result: local Solidity tests prove token metadata, faucet claim, faucet inventory reduction, zero-address rejection, and empty-faucet rejection.
 - Automation: `contracts/TestTokenFaucet.t.sol`.
 
-### CP-007: Test Token Faucet UI
+### CP-008: Test Token Faucet UI
 
 - Preconditions: no real wallet required.
 - Steps:
@@ -187,7 +214,7 @@ Keep this list short and update it as features are added.
 - Expected result: mocked local wallet connects, `Request 100 CLT` updates the user balance to `100 CLT`, and faucet balance becomes `900 CLT`.
 - Automation: `e2e/wallet-connect.spec.ts`.
 
-### CP-008: Local NFT Mint
+### CP-009: Local NFT Mint
 
 - Preconditions: no real wallet required.
 - Steps:
@@ -196,7 +223,7 @@ Keep this list short and update it as features are added.
 - Expected result: local Solidity tests prove NFT metadata, ownership assignment, token URI, zero-address rejection, and missing-token rejection. E2E proves mocked local wallet minting shows `CLNFT #1`, owner address, and `chainlab://local-nft/1`.
 - Automation: `contracts/ChainLabLocalNft.t.sol` and `e2e/wallet-connect.spec.ts`.
 
-### CP-009: Local DAO Voting
+### CP-010: Local DAO Voting
 
 - Preconditions: no real wallet required.
 - Steps:

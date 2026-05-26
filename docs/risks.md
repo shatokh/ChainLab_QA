@@ -24,6 +24,7 @@
 - Missing negative coverage: happy-path-only testing can hide the most important Web3 failure modes.
 - Evidence overstatement: local Hardhat or mocked-provider evidence can be incorrectly described as live wallet, testnet, or production validation.
 - Documentation drift: QA docs can become stale if feature tests or commands change without updating the traceability matrix.
+- CI artifact confusion: uploaded local evidence can be mistaken for testnet, mainnet, live wallet, or production validation.
 
 ## AI-Assisted Development Risks
 

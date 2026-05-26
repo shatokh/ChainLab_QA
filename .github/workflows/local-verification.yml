@@ -1,0 +1,92 @@
+name: Local Verification
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Local checks and evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    env:
+      CI: true
+      NODE_OPTIONS: --use-system-ca
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.17.0
+          cache: yarn
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: corepack yarn install --immutable
+
+      - name: Run local verification gate
+        run: corepack yarn verify
+
+      - name: Install Playwright Chromium
+        run: corepack yarn playwright install chromium
+
+      - name: Run mocked-provider E2E
+        run: corepack yarn test:e2e
+
+      - name: Generate local HTML evidence report
+        run: corepack yarn evidence:local
+
+      - name: Write evidence summary
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p evidence
+          {
+            echo "# Local Verification Evidence"
+            echo
+            echo "- Workflow: ${GITHUB_WORKFLOW}"
+            echo "- Run ID: ${GITHUB_RUN_ID}"
+            echo "- Commit: ${GITHUB_SHA}"
+            echo "- Ref: ${GITHUB_REF}"
+            echo "- Node: 22.17.0"
+            echo "- Package manager: Yarn via Corepack"
+            echo "- Commands:"
+            echo "  - corepack yarn install --immutable"
+            echo "  - corepack yarn verify"
+            echo "  - corepack yarn playwright install chromium"
+            echo "  - corepack yarn test:e2e"
+            echo "  - corepack yarn evidence:local"
+            echo
+            echo "## Evidence Boundaries"
+            echo
+            echo "- Local Hardhat Solidity tests only."
+            echo "- Mocked-provider browser E2E only."
+            echo "- No real wallet."
+            echo "- No real funds."
+            echo "- No mainnet."
+            echo "- No testnet validation."
+            echo "- No paid RPC, paid hosting, or paid reporting service."
+            echo "- No committed secrets."
+          } > evidence/local-verification.md
+
+      - name: Upload local evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: local-verification-evidence
+          path: |
+            evidence/local-verification.md
+            reports/local-evidence-report.html
+          if-no-files-found: error

@@ -42,7 +42,9 @@ Negative tests should cover rejected signatures, chain mismatch, failed transact
 
 ## CI Verification
 
-CI should run repeatable local checks and publish enough evidence to support review. CI must not depend on paid services or unstable external networks by default. Local success must not be presented as testnet validation.
+CI runs repeatable local checks and publishes enough evidence to support review. CI must not depend on paid services or unstable external networks by default. Local success must not be presented as testnet validation.
+
+The Phase 7 local verification workflow runs `corepack yarn verify`, installs Playwright Chromium, runs `corepack yarn test:e2e`, and uploads a local evidence summary artifact. That artifact is local Hardhat and mocked-provider evidence only.
 
 ## Manual Exploratory Testing
 

@@ -1,6 +1,6 @@
 # Evidence Report Template
 
-Use this template for local verification runs. Store completed reports only when a future spec asks for generated or archived evidence. Until Phase 7, this file is a manual template, not a CI artifact requirement.
+Use this template for local verification runs and for interpreting CI evidence summaries. The Phase 7 workflow uploads a generated `local-verification.md` artifact with the command list and evidence boundaries. The local HTML report command writes `reports/local-evidence-report.html` for browser-friendly review.
 
 ## Report ID
 
@@ -35,6 +35,7 @@ Use this template for local verification runs. Store completed reports only when
 ```bash
 corepack yarn verify
 corepack yarn test:e2e
+corepack yarn evidence:local
 ```
 
 Add optional local commands only when used:
@@ -53,6 +54,24 @@ corepack yarn format:check
 | ------------------------ | ------------ | ---------------- |
 | `corepack yarn verify`   | Pass or fail | Summary          |
 | `corepack yarn test:e2e` | Pass or fail | Summary          |
+
+## Local HTML Evidence Report
+
+- Command: `corepack yarn evidence:local`
+- Local file: `reports/local-evidence-report.html`
+- Open command: `corepack yarn evidence:open`
+- Reviewed for local-only boundaries: Yes or no.
+- Reviewed for credential values: Yes or no.
+
+## CI Artifact
+
+- Workflow:
+- Run ID:
+- Artifact name: `local-verification-evidence`
+- Artifact file: `local-verification.md`
+- HTML artifact file: `local-evidence-report.html`
+- Artifact reviewed for secrets: Yes or no.
+- Artifact reviewed for local/testnet/mainnet boundary wording: Yes or no.
 
 ## Evidence Boundaries
 
