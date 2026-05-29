@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 22.17.0
-          cache: yarn
+          package-manager-cache: false
 
       - name: Enable Corepack
         run: corepack enable
@@ -54,7 +54,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 22.17.0
-          cache: yarn
+          package-manager-cache: false
 
       - name: Enable Corepack
         run: corepack enable
@@ -78,7 +78,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 22.17.0
-          cache: yarn
+          package-manager-cache: false
 
       - name: Enable Corepack
         run: corepack enable
@@ -102,7 +102,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 22.17.0
-          cache: yarn
+          package-manager-cache: false
 
       - name: Enable Corepack
         run: corepack enable
@@ -135,7 +135,7 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: 22.17.0
-          cache: yarn
+          package-manager-cache: false
 
       - name: Enable Corepack
         run: corepack enable
