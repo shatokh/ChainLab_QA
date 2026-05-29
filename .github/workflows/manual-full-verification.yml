@@ -1,0 +1,191 @@
+name: Manual Full Verification
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CI: true
+  NODE_OPTIONS: --use-system-ca
+
+jobs:
+  static-checks:
+    name: Static checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.17.0
+          cache: yarn
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: corepack yarn install --immutable
+
+      - name: Run typecheck
+        run: corepack yarn typecheck
+
+      - name: Run lint
+        run: corepack yarn lint
+
+      - name: Run format check
+        run: corepack yarn format:check
+
+  node-tests:
+    name: Node tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.17.0
+          cache: yarn
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: corepack yarn install --immutable
+
+      - name: Run node tests
+        run: corepack yarn test
+
+  contract-tests:
+    name: Solidity contract tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.17.0
+          cache: yarn
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: corepack yarn install --immutable
+
+      - name: Run Solidity contract tests
+        run: corepack yarn test:contracts
+
+  e2e-tests:
+    name: Mocked-provider E2E tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.17.0
+          cache: yarn
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: corepack yarn install --immutable
+
+      - name: Install Playwright Chromium
+        run: corepack yarn playwright install chromium
+
+      - name: Run mocked-provider E2E
+        run: corepack yarn test:e2e
+
+  evidence:
+    name: Local evidence artifact
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs:
+      - static-checks
+      - node-tests
+      - contract-tests
+      - e2e-tests
+    if: always()
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.17.0
+          cache: yarn
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: corepack yarn install --immutable
+
+      - name: Generate local HTML evidence report
+        run: corepack yarn evidence:local
+
+      - name: Write manual evidence summary
+        shell: bash
+        run: |
+          mkdir -p evidence
+          {
+            echo "# Manual Full Verification Evidence"
+            echo
+            echo "- Workflow: ${GITHUB_WORKFLOW}"
+            echo "- Run ID: ${GITHUB_RUN_ID}"
+            echo "- Commit: ${GITHUB_SHA}"
+            echo "- Ref: ${GITHUB_REF}"
+            echo "- Node: 22.17.0"
+            echo "- Package manager: Yarn via Corepack"
+            echo "- Trigger: workflow_dispatch only"
+            echo "- Artifact retention: 1 day"
+            echo "- Jobs:"
+            echo "  - static-checks: corepack yarn typecheck, lint, format:check"
+            echo "  - node-tests: corepack yarn test"
+            echo "  - contract-tests: corepack yarn test:contracts"
+            echo "  - e2e-tests: corepack yarn test:e2e"
+            echo "  - evidence: corepack yarn evidence:local"
+            echo
+            echo "## Evidence Boundaries"
+            echo
+            echo "- Local Hardhat Solidity tests only."
+            echo "- Mocked-provider browser E2E only."
+            echo "- No real wallet."
+            echo "- No real funds."
+            echo "- No mainnet."
+            echo "- No testnet validation."
+            echo "- No paid RPC, paid hosting, or paid reporting service."
+            echo "- No committed secrets."
+          } > evidence/manual-full-verification.md
+
+      - name: Upload manual local evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: manual-full-verification-evidence
+          path: |
+            evidence/manual-full-verification.md
+            reports/local-evidence-report.html
+          if-no-files-found: error
+          retention-days: 1

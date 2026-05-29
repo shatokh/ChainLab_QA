@@ -107,6 +107,14 @@ The GitHub Actions workflow `.github/workflows/local-verification.yml` runs the 
 
 Treat this artifact as local CI evidence only. It is not testnet, mainnet, live wallet, production, paid RPC, or paid hosting validation.
 
+## Manual Full Verification Workflow
+
+The GitHub Actions workflow `.github/workflows/manual-full-verification.yml` is manual-only and uses `workflow_dispatch`. It does not run on push, pull request, schedule, or any automatic trigger.
+
+It separates verification into jobs for static checks, node tests, Solidity contract tests, mocked-provider E2E tests, and local evidence generation. The uploaded `manual-full-verification-evidence` artifact is retained for one day.
+
+Treat this artifact as local evidence only. It is not testnet, mainnet, live wallet, production, paid RPC, or paid hosting validation.
+
 ## Playwright Browser Setup
 
 If E2E tests report a missing browser binary, install Chromium locally:

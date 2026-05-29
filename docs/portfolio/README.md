@@ -11,6 +11,7 @@ Use this guide to review ChainLab QA quickly without requiring a wallet, real fu
 5. Run browser E2E with `corepack yarn test:e2e`.
 6. Generate the local HTML evidence report with `corepack yarn evidence:local`.
 7. Inspect `reports/local-evidence-report.html`.
+8. Optionally run the manual-only GitHub Actions workflow `Manual Full Verification` for layered CI evidence with one-day artifact retention.
 
 ## What To Inspect
 
@@ -22,6 +23,7 @@ Use this guide to review ChainLab QA quickly without requiring a wallet, real fu
 | Traceability Matrix | Maps implemented behavior to automated evidence                           |
 | Local Runbook       | Shows repeatable startup and verification commands                        |
 | GitHub Workflow     | Shows CI readiness and local evidence artifact generation                 |
+| Manual Workflow     | Shows manually triggered layered verification evidence                    |
 
 ## Implemented Local Evidence
 
@@ -29,6 +31,7 @@ Use this guide to review ChainLab QA quickly without requiring a wallet, real fu
 - Solidity tests cover local contract behavior for faucet, NFT, and DAO flows.
 - Playwright tests cover mocked-provider wallet and UI flows.
 - CI workflow captures local verification evidence.
+- Manual full verification workflow captures layered local evidence on demand.
 - Static HTML report summarizes local verification boundaries.
 
 ## Evidence Boundaries
